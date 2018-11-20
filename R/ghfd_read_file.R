@@ -247,7 +247,9 @@ ghfd_read_file.trades <- function(out.file,
                               sum.qtd        = sum(TradedQuantity),
                               sum.vol        = sum(TradedQuantity*TradePrice),
                               n.buys         = sum(TradeSign == 1),
-                              n.sells        = sum(TradeSign == -1))
+                              n.sells        = sum(TradeSign == -1),
+                              buy.flow       = sum((TradeSign == 1)*TradedQuantity),
+                              sell.flow      = sum((TradeSign == -1)*TradedQuantity))
 
     t.out$Tradetime <- format(as.POSIXct(t.out$TradeDateTime), '%H:%M:%S')
 
